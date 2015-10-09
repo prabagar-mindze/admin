@@ -1,0 +1,40 @@
+<section ng-switch="calendarMode">
+  <div class="calendar-header">
+    <button type="button" class="img-btn left-arrow" ng-click="previousMonth()"></button>
+    <strong>{{currentDate.format('MMMM YYYY')}}</strong>
+    <button type="button" class="img-btn right-arrow" ng-click="nextMonth()"></button>
+  </div>
+  <div class="calendar-body">
+    <table style="height:479px;">
+      <thead>
+        <tr style="background-color:#FFF; color:#1074BF;">
+          <th>S</th>
+          <th>M</th>
+          <th>T</th>
+          <th>W</th>
+          <th>T</th>
+          <th>F</th>
+          <th>S</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="week in weeks">
+          <td ng-repeat="day in week"
+              ng-class="{'day-with-events': hasEvents(day.date),
+                         'selected-day': day.date.diff(currentDate.clone().startOf('day')) === 0,
+                         'blocked-day': isBlocked(day.date)}">
+            <ul class="calendar-controls" ng-if="showControls && day.date.diff(currentDate.clone().startOf('day')) === 0">
+              <li><a href="" ng-click="addEvent(day.date)">Add new</a></li>
+              <li><a href="" ng-click="cancelAll(day.date)">Cancel all</a></li>
+              <li ng-switch on="isBlocked(day.date)">
+                <a ng-switch-when="true"  href="" ng-click="unblockDay(day.date)">Unblock date</a>
+                <a ng-switch-when="false" href="" ng-click="blockDay(day.date)">Block date</a>
+              </li>
+            </ul>
+            <span ng-click="selectDay(day.date)">{{day.date.date()}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

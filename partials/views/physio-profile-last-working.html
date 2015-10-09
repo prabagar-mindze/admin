@@ -1,0 +1,468 @@
+<div class="col-lg-12" style="color:#FFFFFF" >
+  <div class="row">
+  
+  
+        <div class="col-md-5">
+        	<div class="well" style="color:#000;">
+        		<!--<img src="../img/famous.jpg" alt="Physio" title="" border="0" class="cimg"> -->
+                <div class="col-md-8">
+                	<input type="text" id="PhysioSearch" name="PhysioSearch" ng-model="PhysioSearch" placeholder="Search" class="form-control" />
+                </div>
+                
+                <div class="col-md-12 well" style="color:#000;">
+                <table class="table table-hover" cellpadding="5" cellspacing="5" border="0">
+                	<thead><th>&nbsp;</th><th>Name</th><th>Specialization</th><th>&nbsp;</th></thead>
+                	<tr ng-repeat="dr in pracList | filter:PhysioSearch">
+                    <td>{{$index+1}}</td>
+                    <td ng-click="getDetails(dr.phoneNumber);" title="Click to see the details of {{ dr.title}}{{dr.practGivenName+' '+dr.practLastName }}">{{ dr.title}}{{dr.practGivenName+' '+dr.practLastName | uppercase }}</td>
+                    <td>{{ dr.specialization }}</td>
+                    <td><img src="{{ dr.avatar }}" width="50" height="50" border="0" /></td>
+                    </tr>
+                </table>
+                </div>
+                
+                
+                          
+                </div>
+            </div>
+            
+            
+  <div class="col-lg-7 text-center" style="background-color:#f5f5f5;">
+  	<div class="well" style="color:black;">{{formError}}
+    <form id="dateRangeForm" name="profileForm" novalidate class="form-horizontal">
+      <fieldset>
+        <legend>Practitioner Profile</legend>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Physio Mobile Number">Mobile Number</label>
+          <div class="col-md-4">
+            <input id="Physio Mobile Number" name="PhysioMobileNumber" ng-model="selectedPrac.phoneNumber" type="text" placeholder="EG:9012345678" class="form-control input-md" required="" ng-pattern="/^[0-9]{10}$/">
+          <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.PhysioMobileNumber.$dirty && (profileForm.PhysioMobileNumber.$invalid || profileForm.PhysioMobileNumber.$error.required || profileForm.PhysioMobileNumber.$error.pattern)">
+              Please enter a valid mobile number.
+          </span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Physio IAP Number">IAP Number</label>
+          <div class="col-md-4">
+            <input id="Physio Mobile Number" name="PhysioIAPNumber" ng-model="selectedPrac.iapNumber" type="text" placeholder="EG:9012345678" class="form-control input-md" required="" ng-pattern="/^[A-Za-z0-9]{1,10}$/">
+          <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.PhysioIAPNumber.$dirty && (profileForm.PhysioIAPNumber.$invalid || profileForm.PhysioIAPNumber.$error.required || profileForm.PhysioIAPNumber.$error.pattern)">
+              Please enter a valid IAP number.
+          </span>
+          </div>
+        </div>
+        
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Physio First Name">First Name</label>
+          <div class="col-md-3">
+            <input id="Physio First Name" class="form-control input-md" type="text" ng-model="selectedPrac.practGivenName" name="practGivenName" required  ng-pattern="/^[A-Za-z0-9]{5,50}$/">
+            <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.practGivenName.$dirty && (profileForm.practGivenName.$invalid || profileForm.practGivenName.$error.required || profileForm.practGivenName.$error.pattern)">
+              Please enter a valid First name.
+          </span>
+          </div>
+          <label class="col-md-2 control-label" for="Physio Last Name">Last Name</label>
+          <div class="col-md-4">
+            <input type="text" id="Physio Last Name" class="form-control input-md" ng-model="selectedPrac.practLastName" 
+            name="practLastName" required ng-pattern="/^[A-Za-z0-9]{1,50}$/">
+            <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.practLastName.$dirty && (profileForm.practLastName.$invalid || profileForm.practLastName.$error.required || profileForm.practLastName.$error.pattern)">
+              Please enter a valid Last name.
+          </span>
+          </div>
+        </div>
+        
+        <!-- Email Address-->
+        <div class="form-group">
+          <label class="col-md-3 control-label">Email Address</label>
+          <div class="col-md-4 email">
+            <div class="input-group input-append email" id="email">
+              <input type="email" class="form-control" ng-model="selectedPrac.email" name="pemail" placeholder="EG: dr.physio@onehealth.solutions" required>
+              <span class="input-group-addon add-on"><span class="glyphicon glyphicon-envelope"></span></span>
+              <span class="validation-error validation-error-stlye-profile" ng-show="profileForm.pemail.$error.email">Not valid email!</span>
+              </div>
+          </div>
+        </div>
+        
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="specialization">Specialization</label>
+          <div class="col-md-4">
+          <select name="specialization" class="form-control" ng-model="selectedPrac.specialization" 
+           ng-selected="selectedPrac.specialization" required>
+            <option ng-repeat="option in sitems" value="{{option.value}}">{{option.name}}</option></select>
+            
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Location">Location</label>
+          <div class="col-md-4">
+            <input id="Location" name="locations" ng-model="selectedPrac.locations" type="text" placeholder="EG: VIKRAM HOSPITAL" class="form-control input-md" required ng-pattern="/^[A-Za-z0-9, ]{1,500}$/">
+          <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.locations.$dirty && (profileForm.locations.$invalid || profileForm.locations.$error.required || profileForm.locations.$error.pattern)">
+              Please enter valid location names.
+          </span>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Location">Home Care</label>
+          <div class="col-md-4">
+            <input name="homecare" class="frt" type="checkbox" ng-model="selectedPrac.homeCare"
+           ng-true-value="'true'" ng-false-value="'false'" style="height: 30px;">
+          </div>
+        </div>
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="monday">Timings</label>
+          <div class="col-md-4">
+            <div class="input-group"> <span class="input-group-addon">
+              <input type="checkbox">
+              Monday </span>
+              <select id="time-in" name="time-in" class="form-control">
+                <option value="1">Time in</option>
+                <option value="1" selected>9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+              <select id="time-out" name="time-out" class="form-control">
+                <option value="1"  selected>Time out</option>
+                <option value="1">9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="tuesday"></label>
+          <div class="col-md-4">
+            <div class="input-group"> <span class="input-group-addon">
+              <input type="checkbox">
+              Tuesday </span>
+              <select id="time-in" name="time-in" class="form-control">
+                <option value="1">Time in</option>
+                <option value="1" selected>9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+              <select id="time-out" name="time-out" class="form-control">
+                <option value="1"  selected>Time out</option>
+                <option value="1">9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="wednesday"></label>
+          <div class="col-md-4">
+            <div class="input-group"> <span class="input-group-addon">
+              <input type="checkbox"id="wednesday" name="wednesday" >
+              Wednesday </span>
+              <select id="time-in" name="time-in" class="form-control">
+                <option value="1">Time in</option>
+                <option value="1" selected>9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+              <select id="time-out" name="time-out" class="form-control">
+                <option value="1"  selected>Time out</option>
+                <option value="1">9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="thursday"></label>
+          <div class="col-md-4">
+            <div class="input-group"> <span class="input-group-addon">
+              <input type="checkbox">
+              Thursday </span>
+              <select id="time-in" name="time-in" class="form-control">
+                <option value="1">Time in</option>
+                <option value="1" selected>9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+              <select id="time-out" name="time-out" class="form-control">
+                <option value="1"  selected>Time out</option>
+                <option value="1">9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="friday"></label>
+          <div class="col-md-4">
+            <div class="input-group"> <span class="input-group-addon">
+              <input type="checkbox">
+              Friday </span>
+              <select id="time-in" name="time-in" class="form-control">
+                <option value="1">Time in</option>
+                <option value="1" selected>9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+              <select id="time-out" name="time-out" class="form-control">
+                <option value="1"  selected>Time out</option>
+                <option value="1">9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="saturday"></label>
+          <div class="col-md-4">
+            <div class="input-group"> <span class="input-group-addon">
+              <input type="checkbox">
+              Saturday </span>
+              <select id="time-in" name="time-in" class="form-control">
+                <option value="1">Time in</option>
+                <option value="1" selected>9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+              <select id="time-out" name="time-out" class="form-control">
+                <option value="1"  selected>Time out</option>
+                <option value="1">9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="sunday"></label>
+          <div class="col-md-4">
+            <div class="input-group"> <span class="input-group-addon">
+              <input type="checkbox">
+              Sunday </span>
+              <select id="time-in" name="time-in" class="form-control">
+                <option value="1">Time in</option>
+                <option value="1" selected>9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+              <select id="time-out" name="time-out" class="form-control">
+                <option value="1"  selected>Time out</option>
+                <option value="1">9:00AM</option>
+                <option value="1">9:30AM</option>
+                <option value="1">10:00AM</option>
+                <option value="1">10:30AM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Date Picker-->
+        <div class="form-group">
+          <label class="col-md-3 control-label">Date of Birth</label>
+          <div class="col-md-4 date">
+            <div class="input-group input-append date" id="dateRangePicker1">
+              <input type="text" class="form-control" name="dbdate" ng-model="selectedPrac.dateOfBirth" />
+              <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span> </div>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <!--<div class="form-group">
+          <label class="col-md-3 control-label" for="Age">Age</label>
+          <div class="col-md-4">
+            <input id="Age" name="Age" type="text" placeholder="Age" class="form-control input-md">
+          </div>
+        </div>-->
+        
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Sex">Sex</label>
+          <div class="col-md-4">
+            <fieldset>
+              <label>
+                <input type="radio" ng-model="selectedPrac.sex" value="male"   name="sex" ng-checked="selectedPrac.sex != 'female'">
+                Male</label>
+              <label>
+                <input type="radio" ng-model="selectedPrac.sex" value="female" name="sex" ng-checked="selectedPrac.sex == 'female'">
+                Female</label>
+            </fieldset>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Physio Address One">Address Line 1</label>
+          <div class="col-md-4">
+            <input id="Physio Address 1" name="PhysioAddress1" ng-model="selectedPrac.addressLine1" type="text" placeholder="EG:9012345678" class="form-control input-md" required="" ng-pattern="/^[A-Za-z0-9-#/., ]{1,100}$/">
+          <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.PhysioAddress1.$dirty && (profileForm.PhysioAddress1.$invalid || profileForm.PhysioAddress1.$error.required || profileForm.PhysioAddress1.$error.pattern)">
+              Please enter valid Address.
+          </span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Physio Address One">Address Line 2</label>
+          <div class="col-md-4">
+            <input id="Physio Address 2" name="PhysioAddress2" ng-model="selectedPrac.addressLine2" type="text" placeholder="EG:9012345678" class="form-control input-md" ng-pattern="/^[A-Za-z0-9-#/., ]{1,100}$/">
+          <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.PhysioAddress2.$dirty && (profileForm.PhysioAddress2.$invalid || profileForm.PhysioAddress2.$error.pattern)">
+              Please enter valid Address.
+          </span>
+          </div>
+        </div>
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="City">City</label>
+          <div class="col-md-4">
+            <input id="Physio city" name="PhysioCity" ng-model="selectedPrac.city" type="text" placeholder="EG:Karnataka" class="form-control input-md" required="" ng-pattern="/^[A-Za-z -]{1,50}$/">
+          <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.PhysioCity.$dirty && (profileForm.PhysioCity.$invalid || profileForm.PhysioCity.$error.required || profileForm.PhysioCity.$error.pattern)">
+              Please enter valid City.
+          </span>
+          </div>
+        </div>
+        
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="State">State</label>
+          <div class="col-md-4">
+            <!--<select id="State" name="State" class="form-control">
+              <option value="1">Karnataka</option>
+              <option value="2">Andhra Pradesh</option>
+              <option value="3">Telugana</option>
+            </select>-->
+            <input id="Physio State" name="PhysioState" ng-model="selectedPrac.state" type="text" placeholder="EG:Karnataka" class="form-control input-md" required="" ng-pattern="/^[A-Za-z -]{1,50}$/">
+          <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.PhysioState.$dirty && (profileForm.PhysioState.$invalid || profileForm.PhysioState.$error.required || profileForm.PhysioState.$error.pattern)">
+              Please enter valid City.
+          </span>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Pincode">Pincode</label>
+          <div class="col-md-4">
+            <input id="Pincode" name="Pincode" ng-model="selectedPrac.zipcode" type="text" placeholder="Pincode" class="form-control input-md" required ng-pattern="/^[0-9]{6}$/">
+ 			<span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.Pincode.$dirty && (profileForm.Pincode.$invalid || profileForm.Pincode.$error.required || profileForm.Pincode.$error.pattern)">
+              Please enter valid City.
+          </span>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Emergency Contact Number">Emergency Contact Number</label>
+          <div class="col-md-4">
+            <input id="Emergency Contact Number" name="emergencyContact" ng-model="selectedPrac.econtactNumber" type="text" placeholder="Emergency Contact Number" class="form-control input-md" ng-pattern="/^[0-9]{10}$/">
+           <span class="validation-error validation-error-stlye-profile"
+                ng-show="profileForm.emergencyContact.$dirty && (profileForm.emergencyContact.$invalid || profileForm.emergencyContact.$error.pattern)">
+              Please enter valid City.
+          </span>
+           </div>
+        </div>
+        
+        <!-- File Button -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="Photo">Photo</label>
+          <div class="col-md-4">
+            <input id="Photo" name="Photo" class="input-file" type="file">
+          </div>
+        </div>
+      </fieldset>
+      <div class="col-lg-12"><div class="col-lg-5 text-center"><button type="button" name="submit_practitioner" ng-show="save_prac" ng-click="savesec()"
+      ng-disabled="profileForm.PhysioMobileNumber.$pristine || profileForm.PhysioIAPNumber.$pristine || profileForm.practGivenName.$pristine
+       || profileForm.practLastName.$pristine || profileForm.pemail.$pristine || profileForm.specialization.$pristine || 
+       profileForm.locations.$pristine || profileForm.PhysioAddress1.$pristine || profileForm.PhysioCity.$pristine 
+      || profileForm.PhysioState.$pristine || profileForm.Pincode.$pristine">Save</button>
+      <button type="button" name="update_practitioner" ng-show="update_prac" ng-click="updatesec()" 
+      ng-disabled="profileForm.PhysioMobileNumber.$pristine || profileForm.PhysioIAPNumber.$pristine || profileForm.practGivenName.$pristine
+       || profileForm.practLastName.$pristine || profileForm.pemail.$pristine || profileForm.specialization.$pristine || 
+       profileForm.locations.$pristine || profileForm.PhysioAddress1.$pristine || profileForm.PhysioCity.$pristine 
+      || profileForm.PhysioState.$pristine || profileForm.Pincode.$pristine">Update</button>
+      </div>
+      <!--<button type="save" class="btn btn-default">Save</button>-->
+      <div class="col-lg-5 text-center"><button type="button" class="btn btn-default" ng-click="cancelPrac()">Cancel</button></div>
+      </div>
+    </form>
+    <script>
+$(document).ready(function() {
+    $('#dateRangePicker1')
+        .datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '01/01/2010',
+            endDate: '12/30/2020'
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#dateRangeForm').formValidation('revalidateField', 'date');
+        });
+
+    $('#dateRangeForm').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            date: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date is required'
+                    },
+                    date: {
+                        format: 'MM/DD/YYYY',
+                        min: '01/01/2010',
+                        max: '12/30/2020',
+                        message: 'The date is not a valid'
+                    }
+                }
+            }
+        }
+    });
+});
+</script> 
+</div>
+  </div>
+</div>

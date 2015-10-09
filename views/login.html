@@ -1,0 +1,83 @@
+<!-- LOGIN BOX -->
+<div class="col-md-11 logsec">
+<div class="col-md-4" style="height:1px;"></div>
+<div class="col-md-4 loginbox">
+
+    	<img src="img/logo.png" title="title" alt="logo" border="0" style="width:100%;margin-bottom: 10px;">
+        
+		<!-- Shown before sending the OTP -->
+    <form class="form-inline" name="loginForm" ng-submit="getOtp()" ng-show="showLogin" novalidate>
+	
+	<table class="logintable" border="0" cellpadding="5" cellspacing="5">
+	<tr><td colspan="2"><div class="form-error">{{otpError}}</div></td></tr>
+	<tr><td colspan="2"><label class="fpass">Partner ID</label></td></tr>
+	<tr><td colspan="2">
+	  <input class="form-control" type="number" ng-model="partnerId" name="partnerId" required maxlength="7" ng-pattern="/^[0-9]{7}$/">
+          <span class="validation-error validation-error-stlye" 
+          ng-show="formSubmitted && (loginForm.partnerId.$invalid || loginForm.partnerId.$error.required || loginForm.partnerId.$error.pattern)">
+              Enter a valid Partner ID.
+          </span>
+          </td></tr>
+	
+	<tr><td style="width:25%;"><label class="fpass">Country</label></td><td><label class="fpass">Your mobile number</label></td></tr>
+          <tr><td><select class="form-control loginselect" name="country" id="country"
+            placeholder="+91"
+            ng-options="country.value as country.label for country in countryCodes"
+            ng-model="countryCode" required>
+	  </select></td>
+		  <td style="width:75%;">
+          <input class="form-control" type="number" name="mobile"
+                 ng-model="mobile" ng-pattern="/^[0-9]{10}$/" required></td></tr>
+	<tr><td><span class="validation-error validation-error-stlye"
+                ng-show="formSubmitted && (loginForm.mobile.$invalid || loginForm.mobile.$error.required)">
+              Select country.
+          </span></td><td><span class="validation-error validation-error-stlye"
+                ng-show="formSubmitted && (loginForm.mobile.$invalid || loginForm.mobile.$error.required)">
+              Enter a valid mobile number.
+          
+          </span>
+          </td></tr>
+	<tr><td colspan="2"><button type="submit">Get OTP</button><!--<img src="img/straight-arrow.png" class="loginarrow" />--></td></tr>
+	</table> 
+	
+	</form>
+    
+
+
+
+   
+    <!-- Show after sending the OTP -->
+    <!--<form class="form-inline" name="otpForm" ng-submit="signIn()" ng-show="showOtp" novalidate>
+	<table class="logintable" border="0" cellpadding="5" cellspacing="5" align="center">
+	<tr><td><label class="fpass">One Time Password</label></td></tr>
+	<tr><td><input class="form-control" type="password" ng-model="otp" required pattern="/^[0-9]{4}$/" maxlength="4"></td></tr>
+	<tr><td><div class="form-message" ng-switch on="waitingForOtp">
+          <span ng-switch-when="waiting">We will call you in 60 seconds if you do not receive the OTP</span>
+          <span ng-switch-when="calling">Calling you now...</span>
+          <a class="fpass" ng-switch-default href="" ng-click="getOtp()">Click here to Re-Send the OTP</a>
+        </div></td></tr>
+	<tr><td><button type="submit">Sign in</button>
+    <span class="validation-error validation-error-stlye"
+                ng-show="formSubmitted && (otpForm.otp.$invalid || otpForm.otp.$error.required)">
+              Enter a valid mobile number.
+          </span></td></tr>
+	</table>
+	</form>-->
+    
+    
+    <!-- Show after sending the OTP -->
+    <form class="form-inline logintable"  name="otpForm" ng-submit="signIn()" ng-show="showOtp">
+      <div class="form-error">{{signInError}}</div>
+      <fieldset>
+        <label>One time password <input class="form-control"  type="password" ng-model="otp" required pattern="[0-9]*" maxlength="4"></label>
+      </fieldset>
+        <div class="form-message" ng-switch on="waitingForOtp">
+          <span ng-switch-when="waiting">We will call you in 60 seconds if you do not receive the OTP</span>
+          <span ng-switch-when="calling">Calling you now...</span>
+          <a ng-switch-default href="" ng-click="getOtp()">Click here to Re-Send the OTP</a>
+        </div>
+      <button type="submit">Sign in</button>
+    </form>
+</div>
+
+<!-- End LOGIN BOX -->

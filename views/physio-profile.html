@@ -1,0 +1,181 @@
+<div class="container-fluid" id="colmd">
+  <div class="row">
+    <div id="sidebar-wrapper" style="z-index: 1000;
+    position: fixed;
+    /*width: 8.33%;*/
+    width: 72px;
+    height: 100%;
+    background: #1074BF;
+    color:#fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;">
+    <nav class="navbar navbar-default">
+     <!-- Toggle for better mobile display -->
+        <div class="navbar-header">
+        
+        
+    	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1">
+          <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span>
+          <span class="icon-bar"></span></button>
+          <!-- Navigation toggling -->
+        <div class="collapse navbar-collapse" id="defaultNavbar1" style="z-index: 1000;">
+    
+            <ul class="sidebar-nav" style="position: absolute;z-index: 1000;
+    width: 100%;
+    list-style:outside;
+    padding: 0; margin-left: -14px; margin-top:138px;">
+                
+                <li id="appointment" class="text-center well liwell" title="Appointment Calendar">
+                    <a style=" color: #FFF;" href="#/appointment"><img src="img/calendar.png" alt="Calendar" style="width:100%;background-color: transparent;" title="Appointment Calendar" />
+                </a></li>
+                <li id="patient" class="text-center well liwell" title="Patient List">
+                    <a style=" color: #FFF;" href="#/patientprofile"><img src="img/patient-list.png" alt="Patient-list" style="width:100%;background-color: transparent;" title="Patient List" />
+                </a></li>
+              <li id="onboard" class="text-center well liwell" style="margin-bottom: 15px;
+    border: 0px solid #e3e3e3;" title="Onboard a Doctor"><a style="color: #FFF;" href="#/physio">
+                    <img src="img/onboard.png" alt="Onboard-a-doctor" style="width:100%;background-color: transparent;" title="Onboard a Doctor" />
+                </a></li>
+              <li id="profile" class="text-center well liwell" title="Your Profile" style="vertical-align:bottom;">
+                    <a style=" color: #FFF;" href="#/profile"><img src="img/profile.png" alt="Sec-Profile" style="width:100%;" title="Your Profile" />
+                </a></li>
+              <li class="text-center well liwell" title="Signout / Logout" style="vertical-align:bottom;">
+                    <a style=" color: #FFF;" href="#/logout"><img src="img/logout.png" alt="Logout" style="width:100%;" title="Logout" />
+                </a></li>
+                
+                
+          </ul></div>
+            </div></nav>
+        </div>
+        <div id="page-content-wrapper"style="/*margin-left: 8.33%;*/margin-left: 72px;
+    position: relative;
+    padding-left: 10px;">
+    <div class="col-md-12">
+      <div class="row header">
+      	<div class="col-md-4">
+        	<div class="col-md-3">
+            	<img src="../img/famous.jpg" alt="" title="" border="0" class="himage">
+            </div>
+            <div class="col-lg-8 htop" style="padding-left: 0px;">PeopleTree Hospital</div>
+        </div>
+        <div class="col-md-4 htop" ng-controller="refresh_control"><span>{{CurrentDate | date:'dd'+"'th' "+'MMMM'+"' | '"+'HH:mm a'}}</span></div>
+        <div class="col-md-3 flt">
+        	<div class="col-lg-8 htop"><div class="text-center" style="float:right;padding-right: 0px;">Ms. Swathi</div></div><div class="col-md-4 flt">
+           	  <img src="../img/famous.jpg" alt="" title="" border="0" class="himage flt">
+            </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+      <div class="row">
+      	<div class="col-md-4" style="float:right;">
+            	<!--<input class="form-control" type="text" ng-model="patientSearch" name="patientSearch" placeholder="Search patient by name or phone" />-->
+        </div>
+      </div>
+      
+    </div>
+    </div>
+    
+    
+    
+    
+<!--View Place-->
+		<div class="app view-container">
+          <!--<div ng-view class="view-frame" ui-view menu-control>
+          <span ng-controller="AppMainCtrl"></span>
+    
+          </div>-->
+          
+          <div class="col-lg-12" style="color:#FFFFFF" >
+  <div class="row docdetails">
+  
+  
+        <div class="col-md-4 backwhite">
+        	<div class="col-md-12" style="color:#000;"><div class="row">
+        		<!--<img src="../img/famous.jpg" alt="Physio" title="" border="0" class="cimg"> -->
+                <div class="col-md-8">
+                	<input type="text" id="PhysioSearch" name="PhysioSearch" ng-model="PhysioSearch" placeholder="Search" class="form-control" />
+                    
+                </div>
+                <div class="col-md-3" style="padding-left: 0px;">
+                	<img src="../img/add-doctor.jpg" alt="add-doctor" title="Add a new doctor" style="width: 112px;height: 35px;" ng-click="adddoctor();"/>
+                </div>
+                </div>
+                
+                <div class="col-md-12 well" style="color:#000;">
+                <table class="table table-hover" cellpadding="5" cellspacing="5" border="0" style="font-weight:bold;">
+                	<thead><th>Name</th><th>Specialization</th><th>&nbsp;</th></thead>
+                	<tr ng-repeat="dr in pracList | filter:PhysioSearch">
+                    
+                    <td ng-click="getDetails(dr.phoneNumber);" title="Click to see the details of {{ dr.title}}{{dr.practGivenName+' '+dr.practLastName }}">{{ dr.title}}{{dr.practGivenName+' '+dr.practLastName | uppercase }}</td>
+                    <td>{{ dr.specialization }}</td>
+                    <td><td><img ng-src="{{ dr.avatar }}" width="50" height="50" border="0" /></td></td>
+                    </tr>
+                </table>
+                </div>
+                
+                
+                          
+                </div>
+            </div>
+            
+            <div class="col-md-4 docdetails">
+        	<div class="well docdetails">
+        		<!--<img src="../img/famous.jpg" alt="Physio" title="" border="0" class="cimg"> -->
+                <div class="col-md-12 well docdetails" ng-show="docedit" style="color:#000;">
+                <div class="col-md-10 black docname">{{ selectedPrac.title }}{{selectedPrac.practGivenName+' '+selectedPrac.practLastName }}</div>
+                <div class="col-md-1"><a href="javascript: showdoctoredit();" title="Click to edit the doctor details">
+                <img src="../img/doctoredit.jpg" border="0" ng-click="showdoctoredit();"></a></div>
+                
+                <div class="col-md-7 docdetails docemail black bold">{{ selectedPrac.email }}</div>
+                <div class="col-md-5 docdetails docemail bold">{{ "+"+selectedPrac.countryCode+"-" }}{{ selectedPrac.phoneNumber }}</div>
+                <div class="col-md-11 docdetails black bold well1">Age : {{ docage }}</div>
+                <div class="col-md-11 docdetails black bold well1">Sex : {{ selectedPrac.sex }}</div>
+                <div class="col-md-11 docdetails black bold well1">Address : {{ selectedPrac.addressLine1 }}</div>
+                <div class="col-md-11 docdetails black bold well1">Address 2 : {{ selectedPrac.addressLine2 }}</div>
+                <div class="col-md-11 docdetails black bold well1">Specialization : {{ selectedPrac.specialization }}</div>
+                <div class="col-md-11 docdetails black bold well1">Available Timings : {{ selectedPrac.timings }}</div>
+                <div class="col-md-11 docdetails black bold well1">Emergency Conatact : +{{selectedPrac.countryCode+"-"}}{{ selectedPrac.econtactNumber }}</div>
+                </div>
+                
+                
+                          
+                </div>
+            </div>
+            
+            
+  <div class="col-lg-4 text-center backwhite">
+
+  <!-- Doctor Appointment List -->
+      <div class="well" ng-show="doctorapplist">
+        
+      <table cellpadding="5" cellspacing="5" border="0" style="margin-top: 20px;background-color::#fff;color:#000;">
+      <tr ng-repeat="events in pracAppointment" style="border-bottom:2px solid #000; height:15px;">
+      <td><font style="font-weight:bold; font-size:15px;">{{events.start | date:'dd'}}th {{ events.start | date:'MMM'}}</font><br />
+        {{events.start | date : 'hh:mm a'}}</td>
+      <td><img ng-src="{{events.status == 'complete' && '../img/complete.png' || '../img/cancelled.png'}}" width="30%"/></td>
+      <td><font style="font-weight:bold; font-size:15px;">{{events.patientInfo.firstName+' '+events.patientInfo.lastName}}, {{events.patientInfo.age}}</font><br />
+        <font style="font-weight:bold;">{{ selectedPrac.title }}{{selectedPrac.practGivenName+' '+selectedPrac.practLastName }}</font>, {{events.location}}</td>
+      </tr>
+      </table>
+  </div>
+  
+  </div>
+  <!-- Doctor Appointment List -->
+  
+  	<div class="col-md-4 well" style="color:#FFF; background-color:#1074BF;" ng-show="doctoredit" ng-include="'partials/views/doctor-appointment.html'">{{formError}}
+     
+</div>
+  </div>
+</div>
+          
+          
+          
+          
+      </div>
+<!--View Place-->     
+      
+      </div>
+  </div>
+</div>
+

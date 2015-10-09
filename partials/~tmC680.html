@@ -1,0 +1,55 @@
+<!-- LOGI ccID="5"N BOX -->
+<section ccID="21">
+	<article ccID="33">
+    	<img ccID="49" src="img/logo.png" title="title" alt="logo" border="0" style="width:100%;margin-top: 5px;
+margin-bottom: 40px;">
+        
+		<!-- Shown before sending the OTP -->
+    <form ccID="224" name="loginForm" ng-submit="getOtp()" ng-show="showLogin" novalidate>
+	
+	<table ccID="305" class="logintable" border="0" cellpadding="5" cellspacing="5">
+	<tr ccID="377"><td ccID="381" colspan="2"><div ccID="397" class="form-error">{{otpError}}</div></td></tr>
+	<tr ccID="452"><td ccID="456" colspan="2"><label ccID="472" class="fpass">Partner ID</td></tr>
+	<tr ccID="516"><td ccID="520" colspan="2"><input ccID="536" class="form-control" type="number" ng-model="partnerId" name="partnerId" required>
+          <span ccID="637" class="validation-error validation-error-stlye"
+                ng-show="formSubmitted && (loginForm.partnerId.$invalid || loginForm.partnerId.$error.required)">
+              Please enter a valid Partner ID.
+          </span></td></tr>
+	
+	<tr ccID="888"><td ccID="892" style="width:25%;"><label ccID="915" class="fpass">Country</label></td><td ccID="956"><label ccID="960" class="fpass">Your mobile number</label></td></tr>
+          <tr ccID="1029"><td ccID="1033" style="padding-left: 15px;"><select ccID="1065" class="form-control loginselect" name="country" id="country"
+            placeholder="+91"
+            ng-options="country.value as country.label for country in countryCodes"
+            ng-model="countryCode" required>
+          </select>
+          <span ccID="1328" class="validation-error validation-error-stlye"
+                ng-show="formSubmitted && (loginForm.mobile.$invalid || loginForm.mobile.$error.required)">
+              Please select country.
+          </span></td>
+		  <td ccID="1558" style="width:75%;">
+          <input ccID="1593" class="form-control" type="tel" name="mobile"
+                 ng-model="mobile" ng-pattern="/^[0-9]{10}$/" required>
+          <span ccID="1730" class="validation-error validation-error-stlye"
+                ng-show="formSubmitted && (loginForm.mobile.$invalid || loginForm.mobile.$error.required)">
+              Please enter a valid mobile number.
+          </span>
+        </label></td></tr>
+	<tr ccID="1993"><td ccID="1997" colspan="2"><button ccID="2013" type="submit">Get OTP</button></td></tr>
+	</table>
+    </form>
+    <!-- Show after sending the OTP -->
+    <form ccID="2132" name="otpForm" ng-submit="signIn()" ng-show="showOtp">
+	<table ccID="2195" class="logintable" border="0" cellpadding="5" cellspacing="5">
+	<tr ccID="2267"><td ccID="2271"><label ccID="2275" class="fpass">One time password</label></td></tr>
+	<tr ccID="2334"><td ccID="2338"><input ccID="2342" class="form-control" type="number" ng-model="otp" required pattern="[0-9]*" maxlength="4"></td></tr>
+	<tr ccID="2452"><td ccID="2456"><div ccID="2460" class="form-message" ng-switch on="waitingForOtp">
+          <span ccID="2527" ng-switch-when="waiting">We will call you in 60 seconds if you do not receive the OTP</span>
+          <span ccID="2637" ng-switch-when="calling">Calling you now...</span>
+          <a ccID="2705" ng-switch-default href="" ng-click="getOtp()">Click here to Re-Send the OTP</a>
+        </div></td></tr>
+	<tr ccID="2816"><td ccID="2820"><button ccID="2824" type="submit">Sign in</button></td></tr>
+	</table>
+	</form>
+	</article>
+</section>
+<!-- End LOGIN BOX -->

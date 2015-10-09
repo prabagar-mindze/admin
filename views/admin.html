@@ -1,0 +1,100 @@
+<div class="container-fluid" id="colmd">
+  <div class="row">
+    <div id="sidebar-wrapper" style="z-index: 1000;
+    position: fixed;
+    /*width: 8.33%;*/
+    width: 72px;
+    height: 100%;
+    background: #1074BF;
+    color:#fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;">
+    <nav class="navbar navbar-default">
+     <!-- Toggle for better mobile display -->
+        <div class="navbar-header">
+        
+        
+    	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1">
+          <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span>
+          <span class="icon-bar"></span></button>
+          <!-- Navigation toggling -->
+        <div class="collapse navbar-collapse" id="defaultNavbar1" style="z-index: 1000;">
+    
+            <ul class="sidebar-nav" style="position: absolute;z-index: 1000;
+    width: 100%;
+    list-style:outside;
+    padding: 0; margin-left: -14px; margin-top:138px;">
+                
+                <li id="appointment" class="text-center well liwell" title="Appointment Calendar">
+                    <a style=" color: #FFF;" ui-sref=".appointment"><img src="img/calendar.png" alt="Calendar" style="width:100%;background-color: transparent;" title="Appointment Calendar" />
+                </a></li>
+                <li id="patient" class="text-center well liwell" title="Patient List">
+                    <a style=" color: #FFF;" ui-sref=".patientprofile"><img src="img/patient-list.png" alt="Patient-list" style="width:100%;background-color: transparent;" title="Patient List" />
+                </a></li>
+              <li id="onboard" class="text-center well liwell" style="margin-bottom: 15px;
+    border: 0px solid #e3e3e3;" title="Onboard a Doctor"><a style="color: #FFF;" ui-sref=".onboarding">
+                    <img src="img/onboard.png" alt="Onboard-a-doctor" style="width:100%;background-color: transparent;" title="Onboard a Doctor" />
+                </a></li>
+              <li id="profile" class="text-center well liwell" title="Your Profile" style="vertical-align:bottom;">
+                    <a style=" color: #FFF;" ui-sref=".profile"><img src="img/profile.png" alt="Sec-Profile" style="width:100%;" title="Your Profile" />
+                </a></li>
+              <li class="text-center well liwell" title="Signout / Logout" style="vertical-align:bottom;">
+                    <a style=" color: #FFF;" href="#/logout"><img src="img/logout.png" alt="Logout" style="width:100%;" title="Logout" />
+                </a></li>
+                
+                
+          </ul></div>
+            </div></nav>
+        </div>
+        <div id="page-content-wrapper"style="/*margin-left: 8.33%;*/margin-left: 72px;
+    position: relative;
+    padding-left: 10px;">
+    <div class="col-md-12">
+      <div class="row header">
+      	<div class="col-md-4">
+        	<div class="col-md-3">
+            	<img src="../img/famous.jpg" alt="" title="" border="0" class="himage">
+            </div>
+            <div class="col-lg-8 htop" style="padding-left: 0px;">PeopleTree Hospital</div>
+        </div>
+        <div class="col-md-4 htop" ng-controller="refresh_control"><span>{{CurrentDate | date:'dd'+"'th' "+'MMMM'+"' | '"+'HH:mm a'}}</span></div>
+        <div class="col-md-3 flt">
+        	<div class="col-lg-8 htop"><div class="text-center" style="float:right;" style="    padding-right: 0px;">Ms. Swathi</div></div><div class="col-md-4 flt">
+           	  <img src="../img/famous.jpg" alt="" title="" border="0" class="himage flt">
+            </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+      <div class="row">
+      	<div class="col-md-4" style="float:right;">
+            	<!--<input class="form-control" type="text" ng-model="patientSearch" name="patientSearch" placeholder="Search patient by name or phone" />-->
+        </div>
+      </div>
+      
+    </div>
+    </div>
+    
+    
+    
+    
+<!--View Place-->
+		<div class="app view-container">
+          <!--<div ng-view class="view-frame" ui-view menu-control>
+          <span ng-controller="AppMainCtrl"></span>
+    
+          </div>-->
+          
+          
+          
+          
+          
+          
+      </div>
+<!--View Place-->     
+      
+      </div>
+  </div>
+</div>
+

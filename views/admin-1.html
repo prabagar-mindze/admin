@@ -1,0 +1,52 @@
+<div class="container-fluid" id="colmd">
+  <div class="row">
+    <div class="col-md-1 navigation" id="navigation">
+    
+    
+    
+      <nav class="navbar navbar-default">
+    <!-- Toggle for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1">
+          <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span>
+          <span class="icon-bar"></span></button>
+          
+        <!-- Navigation toggling -->
+        <div class="collapse navbar-collapse" id="defaultNavbar1" >
+          <ul class="nav navbar-nav">
+          	<!--<li><a href="#/profile"><i class="icon-home"></i></a></li>-->
+            <li><a href=".profile">Profile</a></li>
+            <li><a href=".onboarding">Boarding</a></li>
+            
+            
+           
+          </ul>
+        </div>
+        </div>
+    <!-- /.navbar-collapse --> 
+  	</nav>
+  
+  
+  
+    </div>
+    <div class="col-md-11">
+      <div class="row header">
+      HEADER PORTION {{ t }}
+      </div>
+    </div>
+    
+    
+    
+    
+<!--View Place-->
+		<div class="app view-container">
+          <div ng-view class="view-frame" ui-view menu-control>
+          <span ng-controller="AppMainCtrl"></span>
+    
+          </div>
+      </div>
+<!--View Place-->     
+      
+      
+    </div>
+  </div>

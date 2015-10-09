@@ -1,0 +1,12 @@
+{
+    "new_event_toast_message" : "Appointment Confirmed.",
+    "post_cancel_all" : "All appointments cancelled for %s %s.",
+    "cancelled_appointment_toast_message" : "Selected Appointment is cancelled.",
+    "noshow_appointment_toast_message" : "Selected Appointment is marked as no show.",
+
+    "slownetwork_network_error" : "We have some trouble connecting. Please check your network settings.",
+    "slownetwork_server_error" : "Our server is currently on overload. Please try after some time.",
+
+    "post_record_save"  : "Record saved successfully.",
+    "post_record_cancel" : "Save cancelled."
+}

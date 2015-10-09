@@ -1,0 +1,22 @@
+ <div ng-repeat="events in pracAppointment"><div>
+	<!--<div class="col-md-4" style="border-bottom:1px solid #000;">
+    {{events.start | date:'dd'}}th {{ events.start | date:'MMM'}}<br />
+    {{events.start | date : 'hh:mm a'}}
+    </div>
+  <div class="col-md-1 text-center"><img ng-src="{{interface == 'UP' && 'green-checkmark.png' || 'big-black-X.png'}}"/></div>
+  	<div class="col-md-6 text-center" style="border-bottom:1px solid #000;">
+  	{{events.patientInfo.firstName+' '+events.patientInfo.lastName}}<br />
+  	{{ selectedPrac.title }}{{selectedPrac.practGivenName+' '+selectedPrac.practLastName }}, {{events.location}}
+    </div>
+  </div>-->
+  <table cellpadding="5" cellspacing="5" border="0">
+  <tr ng-repeat="events in pracAppointTwo">
+  <td>{{events.start | date:'dd'}}th {{ events.start | date:'MMM'}}<br />
+    {{events.start | date : 'hh:mm a'}}</td>
+  <td><img ng-src="{{interface == 'completed' && '../img/complete.png' || '../img/cancelled.png'}}"/></td>
+  <td>{{events.patientInfo.firstName+' '+events.patientInfo.lastName}}<br />
+  	{{ selectedPrac.title }}{{selectedPrac.practGivenName+' '+selectedPrac.practLastName }}, {{events.location}}</td>
+  </tr>
+  </table>
+  
+  </div>

@@ -1,0 +1,109 @@
+    <div class="col-md-12" id="logindiv" ng-init="get_product()">
+      <div class="row">
+        <div class="col-md-5 text-center">
+        	<div class="well">
+
+            <img src="../img/famous.jpg" alt="" title="" border="0" class="cimg">
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+        	<div class="well">
+            	<form name="adminform" class="form-horizontal" ng-submit="updatesec()">
+                    <fieldset> 
+                    <legend>Secretary Profile</legend>                   
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="givenName">First Name</label>  
+                      <div class="col-md-5">
+                      <input id="adfname" name="givenName" ng-model="secProfile.givenName" type="text" placeholder="First Name" class="form-control input-md" required="" ng-pattern="/^[A-Za-z]{1,100}$/">
+					  <span class="validation-error validation-error-stlye-profile"
+                ng-show="adminform.givenName.$dirty && (adminform.givenName.$invalid || adminform.givenName.$error.required || adminform.givenName.$error.pattern)">
+              Please enter a valid Name.
+          </span>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                      <label class="col-md-4 control-label" for="adlname">Last Name</label>  
+                      <div class="col-md-5">
+                      <input id="adlname" name="lastName" ng-model="secProfile.lastName" type="text" placeholder="Last Name" 
+                      class="form-control input-md" ng-pattern="/^[A-Za-z]{1,100}$/" required>
+                      <span class="validation-error validation-error-stlye-profile"
+                ng-show="adminform.lastName.$dirty && (adminform.lastName.$invalid || adminform.lastName.$error.required || adminform.lastName.$error.pattern)">
+              Please enter a valid Name.
+          </span>
+					  </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="admobile">Contact Number</label>  
+                      <div class="col-md-5">
+                      <input id="admobile" name="phoneNumber" ng-model="secProfile.phoneNumber" type="text" placeholder="Contact Mobile" class="form-control input-md" required="" ng-pattern="/^[0-9]{10}$/">
+                      <span class="validation-error validation-error-stlye-profile"
+                ng-show="adminform.phoneNumber.$dirty && (adminform.phoneNumber.$invalid || adminform.phoneNumber.$error.required || adminform.phoneNumber.$error.pattern)">
+              Please enter a mobile number.
+          </span>
+					  </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="adaddressLine1">Address Line One</label>
+                      <div class="col-md-5">                     
+                        <input type="text" class="form-control" id="adaddressLine1" ng-model="secProfile.addressLine1" name="addressLine1" ng-pattern="/^[0-9A-Za-z# .,$/]{1,100}$/" />
+                      <span class="validation-error validation-error-stlye-profile"
+                ng-show="adminform.adaddressLine1.$dirty && (adminform.adaddressLine1.$invalid || adminform.adaddressLine1.$error.required || adminform.adaddressLine1.$error.pattern)">
+              Please enter a valid address.
+          </span>
+					  </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="adaddressLine2">Address Line Two</label>
+                      <div class="col-md-5">                     
+                        <input type="text" class="form-control" id="addressLine2" name="addressLine2" ng-model="secProfile.addressLine2" ng-pattern="/^[0-9A-Za-z@# .,$/]{1,100}$/"/>
+                      <span class="validation-error validation-error-stlye-profile"
+                ng-show="adminform.addressLine2.$dirty && (adminform.addressLine2.$invalid || adminform.addressLine2.$error.pattern)">
+              Please enter a valid address.
+          </span>
+					  </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="city">City</label>
+                      <div class="col-md-5">                     
+                        <input type="text" class="form-control" id="city" name="city" ng-model="secProfile.city" ng-pattern="/^[0-9A-Za-z]{1,50}$/" required/>
+                      <span class="validation-error validation-error-stlye-profile"
+                ng-show="adminform.city.$dirty && (adminform.city.$invalid || adminform.city.$error.required || adminform.city.$error.pattern)">
+              Please enter a valid city.
+          </span>
+					  </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="state">State</label>
+                      <div class="col-md-5">                     
+                        <input type="text" class="form-control" id="state" name="state" ng-model="secProfile.state" ng-pattern="/^[0-9A-Za-z]{1,50}$/" required />
+                      <span class="validation-error validation-error-stlye-profile"
+                ng-show="adminform.state.$dirty && (adminform.state.$invalid || adminform.state.$error.required || adminform.state.$error.pattern)">
+              Please enter a valid State.
+          </span>
+					  </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="pincode">Pincode</label>
+                      <div class="col-md-5">                     
+                        <input type="text" class="form-control" id="pincode" name="pincode" ng-model="secProfile.pincode" ng-pattern="/^[0-9]{6}$/" required />
+                      <span class="validation-error validation-error-stlye-profile"
+                ng-show="adminform.pincode.$dirty && (adminform.pincode.$invalid || adminform.pincode.$error.required || adminform.pincode.$error.pattern)">
+              Please enter a valid Pincode.
+          </span>
+					  </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="submit"></label>
+                      <div class="col-md-12">
+                        <div class="col-md-6"><button type="submit" id="submit" name="submit" 
+                        class="btn btn-success">UPDATE PROFILE</button></div>
+                        <div class="col-md-6"><button type="button" id="cancel" name="cancel" class="btn btn-success" ng-click="skip()">CANCEL</button></div>
+                      </div>
+</div>
+                    </fieldset>
+				</form>           
+            	
+            </div>
+        </div>
+      </div>
+    </div>

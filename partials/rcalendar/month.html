@@ -1,0 +1,53 @@
+<div class="calendar-body">
+  <h1>{{msg}}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>S</th>
+        <th>M</th>
+        <th>T</th>
+        <th>W</th>
+        <th>T</th>
+        <th>F</th>
+        <th>S</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in rows track by $index">
+        <td ng-repeat="dt in row track by dt.date" ng-click="select(dt.date)"
+            class="monthview-date-cell"
+            ng-class="{'text-center':true, 'monthview-current': dt.current&&!dt.selected&&!dt.hasEvent,'monthview-secondary-with-event': dt.secondary&&dt.hasEvent, 'monthview-primary-with-event':!dt.secondary&&dt.hasEvent&&!dt.selected, 'monthview-selected': dt.selected}">
+          <ul class="calendar-controls" ng-if="dt.selected">
+            <li><a href="">Add new</a></li>
+            <li><a href="">Cancel all</a></li>
+            <li><a href="">Block date</a></li>
+          </ul>
+
+          <span ng-class="{'text-muted':dt.secondary}">
+            {{dt.label}}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div ng-if="showEventDetail" class="events">
+    <div class="events-header">
+      <span class="day">{{selectedDate.date | date : 'd'}}</span><span class="suffix">th</span>
+      <span class="month">{{selectedDate.date | date : 'MMMM'}}</span>
+      <span class="year">{{selectedDate.date | date : 'yyyy'}}</span>
+    </div>
+    <ul class="event-list">
+      <li ng-repeat="event in selectedDate.events" ng-if="selectedDate.events">
+        <div ng-if="!event.allDay" class="monthview-eventdetail-timecolumn">
+          {{event.startTime|date: 'HH:mm'}} - {{event.endTime|date: 'HH:mm'}}
+          <span class="event-detail" ng-click="eventSelected({event:event})">{{event.title}}</span>
+        </div>
+      </li>
+      <li class="add-event">
+        <a href="" class="bg-icon icon-add-big" ng-click="addEvent(selectedDate)">
+          <span class="link-text">Click here to add an appointment/meeting</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

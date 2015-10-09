@@ -1,0 +1,282 @@
+<div class="container-fluid" id="colmd">
+  <div class="row">
+    <div id="sidebar-wrapper" style="z-index: 1000;
+    position: fixed;
+    /*width: 8.33%;*/
+    width: 72px;
+    height: 100%;
+    background: #1074BF;
+    color:#fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;">
+    <nav class="navbar navbar-default">
+     <!-- Toggle for better mobile display -->
+        <div class="navbar-header">
+        
+        
+    	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1">
+          <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span>
+          <span class="icon-bar"></span></button>
+          <!-- Navigation toggling -->
+        <div class="collapse navbar-collapse" id="defaultNavbar1" style="z-index: 1000;">
+    
+            <ul class="sidebar-nav" style="position: absolute;z-index: 1000;
+    width: 100%;
+    list-style:outside;
+    padding: 0; margin-left: -14px; margin-top:138px;">
+                
+                <li id="appointment" class="text-center well liwell" title="Appointment Calendar">
+                    <a style=" color: #FFF;" href="#/appointment"><img src="img/calendar.png" alt="Calendar" style="width:100%;background-color: transparent;" title="Appointment Calendar" />
+                </a></li>
+                <li id="patient" class="text-center well liwell" title="Patient List">
+                    <a style=" color: #FFF;" href="#/patientprofile"><img src="img/patient-list.png" alt="Patient-list" style="width:100%;background-color: transparent;" title="Patient List" />
+                </a></li>
+              <li id="onboard" class="text-center well liwell" style="margin-bottom: 15px;
+    border: 0px solid #e3e3e3;" title="Onboard a Doctor"><a style="color: #FFF;" href="#/physio">
+                    <img src="img/onboard.png" alt="Onboard-a-doctor" style="width:100%;background-color: transparent;" title="Onboard a Doctor" />
+                </a></li>
+              <li id="profile" class="text-center well liwell" title="Your Profile" style="vertical-align:bottom;">
+                    <a style=" color: #FFF;" href="#/profile"><img src="img/profile.png" alt="Sec-Profile" style="width:100%;" title="Your Profile" />
+                </a></li>
+              <li class="text-center well liwell" title="Signout / Logout" style="vertical-align:bottom;">
+                    <a style=" color: #FFF;" href="#/logout"><img src="img/logout.png" alt="Logout" style="width:100%;" title="Logout" />
+                </a></li>
+                
+                
+          </ul></div>
+            </div></nav>
+        </div>
+        <div id="page-content-wrapper"style="/*margin-left: 8.33%;*/margin-left: 72px;
+    position: relative;
+    padding-left: 10px;">
+    <div class="col-md-12">
+      <div class="row header">
+      	<div class="col-md-4">
+        	<div class="col-md-3">
+            	<img src="../img/famous.jpg" alt="" title="" border="0" class="himage">
+            </div>
+            <div class="col-lg-8 htop" style="padding-left: 0px;">PeopleTree Hospital</div>
+        </div>
+        <div class="col-md-4 htop" ng-controller="refresh_control"><span>{{CurrentDate | date:'dd'+"'th' "+'MMMM'+"' | '"+'HH:mm a'}}</span></div>
+        <div class="col-md-3 flt">
+        	<div class="col-lg-8 htop"><div class="text-center" style="float:right;" style="    padding-right: 0px;">Ms. Swathi</div></div><div class="col-md-4 flt">
+           	  <img src="../img/famous.jpg" alt="" title="" border="0" class="himage flt">
+            </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+      <div class="row">
+      	<div class="col-md-4" style="float:right;">
+            	<!--<input class="form-control" type="text" ng-model="patientSearch" name="patientSearch" placeholder="Search patient by name or phone" />-->
+        </div>
+      </div>
+      
+    </div>
+    </div>
+    
+    
+    
+    
+<!--View Place-->
+		<div class="app view-container">
+          
+<style type="text/css">
+/**
+ * Override feedback icon position
+ * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
+ */
+#dateRangeForm .form-control-feedback {
+	top: 0;
+	right: -15px;
+}
+</style>
+<div class="col-lg-12"  style="background-color:#0F73BF; color:#FFFFFF" ><!--
+  <div class="col-lg-4"> <img src="img/patient-photo.png" alt="Patient" > </div>-->
+  <div class="col-lg-12">
+    <form class="form-horizontal">
+      <fieldset>
+        
+        <!-- Form Name -->
+        <legend>Patient Registration</legend>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Patient Mobile Number">Mobile Number</label>
+          <div class="col-md-6">
+            <input id="Patient Mobile Number" name="Patient Mobile Number" type="text" placeholder="EG:9012345678" class="form-control input-md" required="">
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Patient First Name">First Name</label>
+          <div class="col-md-6">
+            <input id="Patient First Name" name="Patient First Name" type="text" placeholder="EG: JOHN" class="form-control input-md" required="">
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Patient Last Name">Last Name</label>
+          <div class="col-md-6">
+            <input id="Patient Last Name" name="Patient Last Name" type="text" placeholder="EG: MATHEW" class="form-control input-md" required="">
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Email Address">Email</label>
+          <div class="col-md-6">
+            <input id="Email Address" name="Email Address" type="text" placeholder="EG: swathi@onehealth.solutions" class="form-control input-md" required="">
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Age">Age</label>
+          <div class="col-md-6">
+            <input id="Age" name="Age" type="text" placeholder="Age" class="form-control input-md">
+            
+          </div>
+        </div>
+        
+        <!-- Date Picker-->
+        <div class="form-group">
+          <label class="col-md-6 control-label">Date of Birth</label>
+          <div class="col-md-6 date">
+            <div class="input-group input-append date" id="dateRangePicker">
+              <input type="text" class="form-control" name="date" />
+              <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span> </div>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Age">Age</label>
+          <div class="col-md-6">
+            <input id="Age" name="Age" type="text" placeholder="Age" class="form-control input-md">
+          </div>
+        </div>
+        
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Sex">Sex</label>
+          <div class="col-md-6">
+            <fieldset>
+              <label>
+                <input type="radio" ng-model="event.sex" value="male"   name="sex" ng-checked="patient.sex != 'female'">
+                Male</label>
+              <label>
+                <input type="radio" ng-model="event.sex" value="female" name="sex" ng-checked="patient.sex == 'female'">
+                Female</label>
+            </fieldset>
+          </div>
+        </div>
+        
+        <!-- Textarea -->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Address">Address</label>
+          <div class="col-md-6">
+            <textarea class="form-control" id="Address" name="Address">Street</textarea>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Pincode">Pincode</label>
+          <div class="col-md-6">
+            <input id="Pincode" name="Pincode" type="text" placeholder="Pincode" class="form-control input-md">
+          </div>
+        </div>
+        
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="State">State</label>
+          <div class="col-md-6">
+            <select id="State" name="State" class="form-control">
+              <option value="1">Karnataka</option>
+              <option value="2">Andhra Pradesh</option>
+              <option value="3">Telugana</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="City">City</label>
+          <div class="col-md-6">
+            <select id="City" name="City" class="form-control">
+              <option value="1">Bangalore</option>
+              <option value="2">Mangalore</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Emergency Contact Number">Emergency Contact Number</label>
+          <div class="col-md-6">
+            <input id="Emergency Contact Number" name="Emergency Contact Number" type="text" placeholder="Emergency Contact Number" class="form-control input-md">
+            <span class="error-msg">Please Enter the Emergency Mobile Number</span> </div>
+        </div>
+        
+        <!-- File Button -->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Photo">Photo</label>
+          <div class="col-md-6">
+            <input id="Photo" name="Photo" class="input-file" type="file">
+          </div>
+        </div>
+      </fieldset>
+      <button type="save" class="btn btn-default">Save</button>
+      <button type="cancel" class="btn btn-default">Cancel</button>
+    </form>
+    <script>
+$(document).ready(function() {
+    $('#dateRangePicker')
+        .datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '01/01/2010',
+            endDate: '12/30/2020'
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#dateRangeForm').formValidation('revalidateField', 'date');
+        });
+
+    $('#dateRangeForm').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            date: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date is required'
+                    },
+                    date: {
+                        format: 'MM/DD/YYYY',
+                        min: '01/01/2010',
+                        max: '12/30/2020',
+                        message: 'The date is not a valid'
+                    }
+                }
+            }
+        }
+    });
+});
+</script> 
+  </div>
+</div>
+      </div>
+<!--View Place-->     
+      
+      </div>
+  </div>
+</div>
+

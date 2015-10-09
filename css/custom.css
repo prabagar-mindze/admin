@@ -1,0 +1,159 @@
+@charset "utf-8";
+/* CSS Document */
+#innerheight
+{
+	/*background-color:#1074BF;*/
+}
+.row .header
+{
+	background-color:#FFF;
+	height:auto !important;
+	padding-top:10px;
+	padding-bottom:10px;
+	
+}
+.htop
+{
+	padding-top:10px;
+}
+.col-md-1.navigation {
+    /*width: 72px !important;*/
+	background-color:#1074BF;
+}
+.navbar-nav
+{
+	color:#FFF;
+}
+.navbar-default
+{
+	background-color:#1074BF;
+	border-color:#1074BF;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
+.logsec
+{
+	width:100%;
+	margin:0px auto;
+	position:relative;
+	    background: url(../img/home-bg.png);
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+}
+.loginbox
+{
+	background-color:#F5F5F5;
+	margin-top: 40px;
+    margin-bottom: 40px;
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+.logintable
+{
+	margin-left:22px;
+}
+.form-inline .form-control
+{
+	/*width:93%;*/
+	width:98%;	
+}
+form[name="loginForm"] button[type="submit"], form[name="otpForm"] button[type="submit"], 
+form[name="adminform"] button[type="submit"], form[name="adminform"] button[type="button"], 
+form[name="profileForm"] button[type="submit"],form[name="profileForm"] button[type="button"]  {
+	background-color:#19C5B3;
+	height:57px;
+        -webkit-border-radius: 0.3em;
+        -moz-border-radius: 0.3em;
+        -ms-border-radius: 0.3em;
+        -o-border-radius: 0.3em;
+        border-radius: 0.3em;
+        width: 93%;
+        margin-top: 5%;
+		margin-bottom: 5%;
+        /*padding: 1em;*/
+        color: white;
+        text-transform: capitalize;
+		font-size:18px; 
+}
+.loginarrow
+{
+	margin-left: -122px;
+}
+.validation-error
+{
+	color:red;
+	font-weight:600;
+}
+.container.login
+{
+	width:100%;
+}
+.cimg
+{
+	width:65%;
+}
+.himage
+{
+	width: 70px;
+    height: 45px;
+}
+.flt { float:right; }
+.frt { float:left; }
+.well
+{
+	background-color:transparent;
+	border:0;
+	border-radius:1px;
+}
+.navbar-toggle
+{
+	width: 100%;
+}
+.liwell
+{
+	height:72px;
+/*	background-color: chartreuse;
+*/    border: 0px solid #e3e3e3;
+	z-index: 1000;
+}
+.well1
+{
+	min-height: 20px;
+    padding: 9px 5px 5px 15px;font-size:12px;
+}
+.form-group
+{
+	color:#000;
+}
+.black
+{
+	color:#000;
+}
+.white
+{
+	color:#fff;
+}
+.docname
+{
+	color:#0F73BF;
+	font-size:19px;
+	font-weight:600;
+	
+}
+.docemail
+{
+	font-size:12px;margin-bottom:30px;
+}
+.docdetails
+{
+	color:#000; height:auto; background-color:#EEEFF4;
+}
+.bold
+{
+	font-weight:bolder;
+}
+.backwhite
+{
+	background-color:#fff;
+}
